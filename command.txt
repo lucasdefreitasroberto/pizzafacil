@@ -1,0 +1,39 @@
+// comandos Usados no projeto //
+
+// Iniciar o projetos
+npm init -y 
+
+// Instalar typescript apenas para desenvolvimento e não produção, na produção no biuld ele vira Javascript
+npm install -D typescript
+
+// install express na construção de servidores web.
+npm install express 
+
+// instalar a estrutura e metodos do Express em typescript.
+npm install @types/express -D
+
+//  Forçar a limpeza do cache 
+npm cache clean --force
+
+// Instale o tsc-init a partir do npm globalmente
+npm install tsc-init -g
+
+// Execute o seguinte comando dentro da pasta do projeto    
+tsc-init
+
+// npm i ts-node-dev --save-dev
+Rodar projeto com typescript
+
+//packge.json "dev": "ts-node-dev --transpile-only src/server.ts"
+
+// Tratamento de erro
+npm install express-async-errors --save
+
+//O CORS é um pacote para fornecer um middleware Connect/Express que pode ser usado para habilitar o CORS com várias opções.
+// neste caso vou usar ele para fazer que meu programa funcione em qualquer url e ip
+npm install cors
+
+//ORM
+yarn add prisma
+//
+yarn add @prisma/client 
