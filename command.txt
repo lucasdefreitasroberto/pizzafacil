@@ -21,8 +21,8 @@ npm install tsc-init -g
 // Execute o seguinte comando dentro da pasta do projeto    
 tsc-init
 
-// npm i ts-node-dev --save-dev
-Rodar projeto com typescript
+//Rodar projeto com typescript
+npm i ts-node-dev --save-dev
 
 //packge.json "dev": "ts-node-dev --transpile-only src/server.ts"
 
@@ -30,10 +30,13 @@ Rodar projeto com typescript
 npm install express-async-errors --save
 
 //O CORS é um pacote para fornecer um middleware Connect/Express que pode ser usado para habilitar o CORS com várias opções.
-// neste caso vou usar ele para fazer que meu programa funcione em qualquer url e ip
 npm install cors
 
 //ORM
 yarn add prisma
-//
+
+//ORM client
 yarn add @prisma/client 
+
+//Criar as migrates
+npx prisma migrate dev
