@@ -12,21 +12,21 @@ datasource db {
 
 // Criar uma migration yarn add prisma migrate dev
 model user {
-  id         String    @id @default(uuid())
-  name       String
-  email      String
-  password   String
-  created_at DateTime? @default(now())
-  update_at  DateTime? @default(now())
+  id        String    @id @default(uuid())
+  name      String
+  email     String
+  password  String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
 
   @@map("users")
 }
 
 model category {
-  id         String    @id @default(uuid())
-  name       String
-  created_at DateTime? @default(now())
-  update_at  DateTime? @default(now())
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
 
   products product[] // Relacionamento 1 Cadegoria pode ter varios produtos
 
@@ -39,13 +39,13 @@ model product {
   price       String
   description String
   banner      String
-  created_at  DateTime? @default(now())
-  update_at   DateTime? @default(now())
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now())
 
+  categotyProduct category @relation(fields: [category_id], references: [id]) // Relacionamento com o ID da categoria
+
+  Items       Item[]
   category_id String // Field que terá o relacionamento com a categoria 
-
-  categotyProduct category    @relation(fields: [category_id], references: [id]) // Relacionamento com o ID da categoria
-  orderItem       orderItem[]
 
   @@map("products")
 }
@@ -56,25 +56,25 @@ model order {
   status     Boolean   @default(false)
   draft      Boolean   @default(true)
   nameClient String?
-  created_at DateTime? @default(now())
-  update_at  DateTime? @default(now())
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @default(now())
 
-  orderItem orderItem[] // Relacionamento 1 Item pode ter varias ordem
+  Items Item[] // Relacionamento 1 Item pode ter varias ordem
 
   @@map("orders")
 }
 
-model orderItem {
-  id         String    @id @default(uuid())
-  amount     Int
-  created_at DateTime? @default(now())
-  update_at  DateTime? @default(now())
-
-  order_id   String // Field que terá o relacionamento com a ordem 
-  product_id String // Field que terá o relacionamento com o produto 
+model Item {
+  id        String    @id @default(uuid())
+  amount    Int
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
 
   order   order   @relation(fields: [order_id], references: [id]) // Relacionamento com o ID da ordem
   product product @relation(fields: [product_id], references: [id])
 
-  @@map("orderItems")
+  order_id   String // Field que terá o relacionamento com a ordem 
+  product_id String // Field que terá o relacionamento com o produto 
+
+  @@map("Items")
 }
